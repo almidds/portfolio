@@ -54,6 +54,9 @@
     text-decoration: none;
     color: var(--text-color);
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);box-shadow: 5px;
+    animation-name: shrink-project;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
   }
   .project:hover{
     animation-name: grow-project;
@@ -232,6 +235,16 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);box-shadow: 5px;
     }
     100% {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.7), 0 6px 6px rgba(0,0,0,0.23);box-shadow: 5px;
+    }
+  }
+  @keyframes shrink-project {
+    100%{
+      transform: scale(1);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);box-shadow: 5px;
+    }
+    0% {
       transform: scale(1.05);
       box-shadow: 0 10px 20px rgba(0,0,0,0.7), 0 6px 6px rgba(0,0,0,0.23);box-shadow: 5px;
     }
