@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+<style>
+  
+  :root{
+    scroll-behavior: smooth;
+    --nav-color: #FFCCCC;
+    --nav-color-select:#dda5a5;
+    --box-color: #FFCCCC;
+    --underline-color: rgb(73, 73, 73);
+    --text-color: rgb(73, 73, 73);
+  }
+
+  body{
+    background: linear-gradient(35deg, #CCFFFF, #FFCCCC);
+    font-family: Roboto;
+    color: var(--text-color);
+    padding: 0;
+    margin: 0;
+  }
+  #welcome{
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height:100vh;
+    width: 100%;
+    text-align: center;
+  }
+  #welcome div{
+    display: flex;
+    align-content: center;
+  }
+  .container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    /*margin: 0 auto;*/
+    justify-content: center;
+    grid-gap: 4rem;
+    grid-auto-rows: 350px;
+  }
+  .project{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: bottom;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text-color);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);box-shadow: 5px;
+  }
+  .project:hover{
+    animation-name: grow-project;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+  }
+  #project-intro{
+    border-top: solid;
+    border-top-color: var(--underline-color);
+    border-width: 2px;
+    width: 50%;
+    margin-left: 25%;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  #project1{
+    background: url(https://beta.ctvnews.ca/content/dam/ctvnews/images/2019/11/18/1_4691731.png?cache_timestamp=1574134871525);
+    background-size: auto 100%;
+    background-position: center;
+  }
+  #project2{
+    background: url(https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg);
+    background-size: auto 100%;
+    background-position: center;
+  }
+  #project3{
+    background: url(https://i.redd.it/dsb199buhxe51.jpg);
+    background-size: auto 100%;
+    background-position: center;
+  }
+  #project4{
+    background: url(https://wompampsupport.azureedge.net/fetchimage?siteId=7575&v=2&jpgQuality=100&width=700&url=https%3A%2F%2Fi.kym-cdn.com%2Fentries%2Ficons%2Foriginal%2F000%2F026%2F489%2Fcrying.jpg);
+    background-size: auto 100%;
+    background-position: center;
+  }
+  #project5{
+    background: url(https://www.cnet.com/a/img/S8WsucQh6wWeUG1yrQi66jKNtto=/940x0/2020/09/22/ad4bd31b-cf8c-46f5-aa70-231df9acc041/longcat.jpg);
+    background-size: auto 100%;
+    background-position: center;
+  }
+
+  #project-box{
+    font-size: 1.5em;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    background-color:var(--box-color);
+    height: 20%;
+    Width: 100%;
+    animation-name: shrink-description;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+  }
+  .project:hover #project-box{
+    animation-name: grow-description;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+  }
+  #project-title{
+    margin-top: 5%;
+    margin-bottom: 0;
+    margin-left: 12%;
+    width: 76%;
+    border-bottom: solid;
+    border-bottom-color: var(--underline-color);
+    border-width: 2px;
+    animation-name: border-color-out;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+  }
+  .project:hover #project-title{
+    animation-name: border-color-in;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+  }
+  #navbar{
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    position: fixed;
+    background-color:var(--nav-color);
+    width: 100%;
+    height: 50px;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);box-shadow: 5px;
+  }
+  .nav-link{
+    display: flex;
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    background-color:var(--nav-color);
+
+    justify-content: center;
+    align-self: center;
+
+    height: 100%;
+    width: 100px;
+  }
+  .nav-link div{
+    align-self: center;
+  }
+  .nav-link:hover{
+    animation-name: color-in;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+  }
+  #project-description{
+    font-size: 0.7em;
+  }
+
+  #contactbar{
+    padding-top: -25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    position: relative;
+    background-color:var(--nav-color);
+    width: 100%;
+    height: 35vh;
+    margin-top: 15vh;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);box-shadow: 5px;
+  }
+
+  #contactbar div{
+    
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+  }
+
+  #contactbar h1{
+    margin-top: -25px;
+  }
+
+  .contact-link{
+    display: flex;
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    background-color:var(--nav-color);
+
+    justify-content: center;
+    align-self: center;
+
+    font-size: 100%;
+    height: 100%;
+    width: 100px;
+
+    border-bottom: 2px solid var(--box-color);
+  }
+  .conact-link div{
+    align-self: center;
+
+  }
+
+  .contact-link:hover{
+    animation-name: embolden;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes grow-project {
+    0%{
+      transform: scale(1);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);box-shadow: 5px;
+    }
+    100% {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.7), 0 6px 6px rgba(0,0,0,0.23);box-shadow: 5px;
+    }
+  }
+
+  @keyframes grow-description {
+    0%{
+      height:20%;
+    }
+    100% {
+      height:50%;
+    }
+  }
+  @keyframes shrink-description {
+    0%{
+      height:50%;
+    }
+    100% {
+      height:20%;
+    } 
+
+  }
+  @keyframes border-color-in {
+    0%{
+      border-color: var(--box-color);
+    }
+    100% {
+      border-color: var(--underline-color);
+    }
+  }
+  @keyframes border-color-out {
+    100%{
+      border-color: var(--box-color);
+    }
+    0% {
+      border-color: var(--underline-color);
+    }
+  }
+  @keyframes color-in {
+    0%{
+      background-color: var(--nav-color);
+    }
+    100% {
+      background-color: var(--nav-color-select);
+    }
+  }
+  @keyframes embolden {
+    0%{
+      font-weight: 100;
+      border-color: var(--box-color);
+    }
+    100% {
+      font-weight: 900;
+      border-color: var(--underline-color);
+    }
+  }
+  
+</style>
+
+<body>
+
+  
+  <!--Beginning of nav section-->
+  <section id="navbar">
+    <a class="nav-link" href="#welcome">
+        <div>Welcome</div>
+    </a>
+    <a class="nav-link" href="#projects">
+        <div>Projects</div>
+    </a>
+    <a class="nav-link" href="#contactbar">
+        <div>Contact</div>
+    </a> 
+  </section>
+  <!--Ending of nav section-->
+
+  <!--Beginning of welcome section-->
+  <section id="welcome">
+    <h1>Andrew's future portfolio</h1>
+    <p>Exactly what it says</p>
+
+  </section>
+  <!--Ending of welcome section-->
+
+  <!--Beginning of projects section-->
+  <section id="projects">
+    <div id="project-intro">
+      <h1>Take a look at my projects</h1>
+      <p>(Once I actually put them in)</p>
+    </div>
+    <div class="container">
+      <a class="project" id="project1" target="_blank" href="https://www.youtube.com/watch?v=c8Q5mRbkUgU">
+        <div id="project-box">
+          <h2 id="project-title">Cat</h2>
+
+          <p id="project-description">
+            This is the description of the image above. Currently it is a cat. I'm going to fill the rest of this box with text so I can test the float in.
+          </p>
+        </div>
+      </a>
+
+      <a class="project" id="project2" target="_blank" href="https://www.youtube.com/watch?v=c8Q5mRbkUgU">
+        <div id="project-box">
+          <h2 id="project-title">Dog</h2>
+
+          <p id="project-description">
+            This is the description of the image above. Currently it is a dog. I'm going to fill the rest of this box with text so I can test the float in.
+          </p>
+        </div>
+      </a>
+      <a class="project" id="project3" target="_blank" href="https://www.youtube.com/watch?v=c8Q5mRbkUgU">
+        <div id="project-box">
+          <h2 id="project-title">Cow?</h2>
+
+          <p id="project-description">
+            This is the description of the image above. Currently it is a cow (I think). I'm going to fill the rest of this box with text so I can test the float in.
+          </p>
+        </div>
+      </a>
+      <a class="project" id="project4" target="_blank" href="https://www.youtube.com/watch?v=c8Q5mRbkUgU">
+        <div id="project-box">
+          <h2 id="project-title">Sad cat</h2>
+
+          <p id="project-description">
+            This is the description of the image above. Currently it is a sad cat. I'm going to fill the rest of this box with text so I can test the float in.
+          </p>
+        </div>
+      </a>
+      <a class="project" id="project5" target="_blank" href="https://www.youtube.com/watch?v=c8Q5mRbkUgU">
+        <div id="project-box">
+          <h2 id="project-title">Long cat</h2>
+
+          <p id="project-description">
+            This is the description of the image above. Currently it is a long cat. I'm going to fill the rest of this box with text so I can test the float in.
+          </p>
+        </div>
+      </a>
+
+
+    </div>
+
+  </section>
+  <!--Ending of projects section-->
+
+    <!--Beginning of contact section-->
+    <section id="contactbar">
+      <h1>Contact me</h1>
+      <div>
+        <a class="contact-link" target="_blank" href="https://www.facebook.com/andrew.middleton.3517">
+            <div>Facebook</div>
+        </a>
+        <a class="contact-link" target="_blank" href="https://www.linkedin.com/in/andrew-middleton-bb714b155">
+            <div>Linkedin</div>
+        </a>
+        <a class="contact-link" target="_blank" href="https://github.com/almidds">
+            <div>Github</div>
+        </a>
+        <a class="contact-link" target="_blank" href="tel:07854888381">
+          <div>Telephone</div>
+        </a> 
+        <a class="contact-link" target="_blank" href="mailto:almidds@hotmail.com">
+          <div>Email</div>
+        </a> 
+      </div>
+    </section>
+    <!--Ending of contact section-->
+</body>
+</html> 
